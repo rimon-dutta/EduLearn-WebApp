@@ -12,8 +12,12 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
                 <ul class="navbar-nav">
-                    <li>@Html.ActionLink("Sign Up", "SignUp", "Home", new { area = "" }, new { @class = "btn border-0 fw-bold", @style = "background-color: #E232EF;" })</li>
-                    <li>@Html.ActionLink("Login", "LogIn", "Home", new { area = "" }, new { @class = "btn btn-primary ms-2 border-0 bg-light text-dark fw-bold" })</li>
+                    <li>@Html.ActionLink("Dashboard", "Dashboard", "Dashbaord", new { area = "" }, new { @class = "btn btn-primary border-0 bg-light text-dark fw-bold" })</li>
+                    <li>
+                        <form method="post" action="">
+                            <button type="submit" class="btn border-0 ms-2 fw-bold" style="background-color: #E232EF;">Log Out</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -29,8 +33,7 @@
                     <li>Track learning goals and see your progress</li>
                 </ul>
                 <div class="d-flex pt-3">
-                    @Html.ActionLink("Sign Up", "SignUp", "Home", new { area = "" }, new { @class = "btn border-0 fw-bold", @style = "background-color: #E232EF;" })
-                    @Html.ActionLink("Login", "LogIn", "Home", new { area = "" }, new { @class = "btn btn-primary ms-2 border-0 bg-light text-dark fw-bold" })
+                    @Html.ActionLink("Go To Dashboard", "Dashboard", "Dashboard", new { area = "" }, new { @class = "btn btn-primary ms-2 border-0 bg-light text-dark fw-bold" })
                 </div>
             </div>
             <div class="col-6">

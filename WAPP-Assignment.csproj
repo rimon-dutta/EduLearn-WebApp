@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -127,6 +128,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Assets\earth.svg" />
+    <Content Include="Content\Assets\flame.svg" />
+    <Content Include="Content\Assets\folder.svg" />
+    <Content Include="Content\Assets\jupiter.svg" />
+    <Content Include="Content\Assets\mars.svg" />
+    <Content Include="Content\Assets\mercury.svg" />
+    <Content Include="Content\Assets\neptune.svg" />
+    <Content Include="Content\Assets\plus.svg" />
+    <Content Include="Content\Assets\saturn.svg" />
+    <Content Include="Content\Assets\solar-system-model.svg" />
+    <Content Include="Content\Assets\sun.svg" />
+    <Content Include="Content\Assets\uranus.svg" />
+    <Content Include="Content\Assets\venus.svg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -174,9 +188,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\IndexLoggedIn.cshtml" />
+    <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
