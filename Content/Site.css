@@ -18,3 +18,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.folder-hover:hover {
+    background-color: #23156B;
+}
