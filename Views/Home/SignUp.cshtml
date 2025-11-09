@@ -3,10 +3,12 @@
 }
 
 <main class="d-flex flex-column min-vh-100" style="background-color: #0E0639;">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-opacity-75" style="background-color: #23156B; ">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-opacity-75"
+         style="background-color: #23156B; ">
         <div class="container">
             @Html.ActionLink("The Solar System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fw-bold fs-2" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,47 +21,40 @@
     </nav>
     <section class="position-relative container d-flex flex-grow-1">
         <div class="d-flex flex-fill align-items-center justify-content-center" style="z-index: 50;">
-            <div class="rounded-2 p-5" style="backdrop-filter: blur(4px); background-color: rgba(226, 50, 239, 0.30); border: 2px solid #E232EF; ">
-                <form class="d-flex flex-column" method="post" action="">
-                    <h2 class="text-light fw-bold fs-3">Sign Up</h2>
+            <div class="rounded-2 p-5"
+                 style="backdrop-filter: blur(4px); background-color: rgba(226, 50, 239, 0.30); border: 2px solid #E232EF; ">
+                <div class="d-flex flex-column">
+                    @using (Html.BeginForm("SignUpAction", "Home", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
 
-                    <div class="d-flex py-3">
-                        <div class="d-flex flex-column">
-                            <label class="text-light py-2 fs-4" for="Username">Username</label>
-                            <input id="Username" type="text" required class="px-2" style="border-radius: 0.375rem; height: 2.5rem;" />
-                        </div>
-                        <div class="d-flex flex-column ps-4">
-                            <label class="text-light py-2 fs-4" for="Password">Password</label>
-                            <input id="Password" type="password" required class="px-2" style="border-radius: 0.375rem; height: 2.5rem;" />
-                        </div>
-                    </div>
+                        <h2 class="text-light fw-bold fs-3">Sign Up</h2>
 
-                    <div class="d-flex py-3">
-                        <div class="d-flex flex-column col-6">
-                            <label class="text-light py-2 fs-4" for="AgeBracket">Age Bracket</label>
-                            <select id="AgeBracket" required class="px-2" style="border-radius: 0.375rem; height: 2.5rem;">
-                                <option>Kid</option>
-                                <option>Teen</option>
-                                <option>Adult</option>
-                            </select>
+                        <div class="d-flex py-3">
+                            <div class="d-flex flex-column">
+                                <label class="text-light py-2 fs-4" for="Username">Username</label>
+                                <input id="Username" name="username" type="text" required class="px-2"
+                                       style="border-radius: 0.375rem; height: 2.5rem;"/>
+                            </div>
+                            <div class="d-flex flex-column ps-4">
+                                <label class="text-light py-2 fs-4" for="Password">Password</label>
+                                <input id="Password" name="password" type="password" required class="px-2"
+                                       style="border-radius: 0.375rem; height: 2.5rem;"/>
+                            </div>
                         </div>
-                        <div class="d-flex flex-column ps-4 col-6">
-                            <label class="text-light py-2 fs-4" for="Role">Role</label>
-                            <select id="Role" required class="px-2" style="border-radius: 0.375rem; height: 2.5rem;">
-                                <option>Student</option>
-                                <option>Teacher</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="d-flex justify-content-end w-100 pt-5">
-                        <button class="btn fw-bold bg-white border-0" type="submit">Sign Up</button>
-                    </div>
-                </form>
+                        <div class="d-flex justify-content-end w-100 pt-5">
+                            <button class="btn fw-bold bg-white border-0" type="submit">Sign Up</button>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
-        <div class="position-absolute top-0 start-0 end-0 bottom-0 d-flex flex-fill align-items-center justify-content-center overflow-hidden" style="z-index: 20;">
-            <img src="@(Url.Content("~/Content/Assets/solar-system-model.svg"))" alt="Planet" class="img-fluid w-75" style="" />
+        <div
+            class="position-absolute top-0 start-0 end-0 bottom-0 d-flex flex-fill align-items-center justify-content-center overflow-hidden"
+            style="z-index: 20;">
+            <img src="@(Url.Content("~/Content/Assets/solar-system-model.svg"))" alt="Planet" class="img-fluid w-75"
+                 style=""/>
         </div>
     </section>
 </main>

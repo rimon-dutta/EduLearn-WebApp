@@ -3,10 +3,12 @@
 }
 
 <main class="d-flex flex-column min-vh-100" style="background-color: #0E0639;">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-opacity-75" style="background-color: #23156B; ">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-opacity-75"
+         style="background-color: #23156B; ">
         <div class="container">
             @Html.ActionLink("The Solar System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fw-bold fs-2" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -14,9 +16,16 @@
                 <ul class="navbar-nav">
                     <li>@Html.ActionLink("Dashboard", "Dashboard", "Dashboard", new { area = "" }, new { @class = "btn btn-primary border-0 bg-light text-dark fw-bold" })</li>
                     <li>
-                        <form method="post" action="">
-                            <button type="submit" class="btn border-0 ms-2 fw-bold" style="background-color: #E232EF;">Log Out</button>
-                        </form>
+                        <div>
+                            @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <button type="submit" class="btn border-0 ms-2 fw-bold"
+                                        style="background-color: #E232EF;">Log Out
+                                </button>
+                            }
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -26,7 +35,8 @@
         <div class="d-flex flex-fill align-items-center">
             <div class="col-6 fs-3">
                 <h2 class="text-white font-weight-bold fs-1 pb-5">Explore our Solar System and its many secrets!</h2>
-                <p class="text-white pe-5">Sign up now and enjoy all of our exclusive benefits for all our registered learners and educators:</p>
+                <p class="text-white pe-5">Sign up now and enjoy all of our exclusive benefits for all our registered
+                    learners and educators:</p>
                 <ul class="list-group text-light px-5">
                     <li>Create flashcards</li>
                     <li>Create personalized quizzes and tests</li>
@@ -37,7 +47,8 @@
                 </div>
             </div>
             <div class="col-6">
-                <img src="@(Url.Content("~/Content/Assets/solar-system-model.svg"))" alt="Planet" class="img-fluid" style="" />
+                <img src="@(Url.Content("~/Content/Assets/solar-system-model.svg"))" alt="Planet" class="img-fluid"
+                     style=""/>
             </div>
         </div>
     </section>

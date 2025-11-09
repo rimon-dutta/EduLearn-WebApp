@@ -1,6 +1,6 @@
-﻿@{
+﻿@using WAPP_Assignment.Model
+@{
     ViewBag.Title = "The Solar System - Dashboard";
-    ViewBag.Flashcards = new List<string> { "Flashcard 1", "Flashcard 2" };
 }
 
 <main class="d-flex flex-column min-vh-100" style="background-color: #0E0639;">
@@ -11,16 +11,22 @@
             <div class="col d-flex align-items-center justify-content-center h-100">
                 <img src="@(Url.Content("~/Content/Assets/flame.svg"))" alt="Streak" class="img-fluid pe-3"
                      style="max-width: 75%; max-height: 54px;"/>
-                <p class="fw-bold fs-4 m-0 align-self-center text-light">0</p>
+                <p class="fw-bold fs-4 m-0 align-self-center text-light">@ViewBag.LearningStreak</p>
             </div>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end col">
                 <ul class="navbar-nav">
                     <li>
-                        <form method="post" action="">
-                            <button type="submit" class="btn border-0 ms-2 fw-bold" style="background-color: #E232EF;">
-                                Log Out
-                            </button>
-                        </form>
+                        <div>
+                            @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <button type="submit" class="btn border-0 ms-2 fw-bold"
+                                        style="background-color: #E232EF;">
+                                    Log Out
+                                </button>
+                            }
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -28,102 +34,108 @@
     </nav>
     <section class="container d-flex mt-3">
         <nav class="d-flex w-100 text-light">
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Sun">
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Sun">
                 <img src="@(Url.Content("~/Content/Assets/sun.svg"))" alt="Sun" class="img-fluid pb-2"
                      style="width: 75%;"/>
                 <p>The Sun</p>
-            </a>
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Mercury">
+            </div>
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Mercury">
                 <div class="d-flex flex-fill w-100 align-items-center justify-content-center">
                     <img src="@(Url.Content("~/Content/Assets/mercury.svg"))" alt="Mercury" class="img-fluid pb-2"
                          style="width: 15%;"/>
                 </div>
                 <p>Mercury</p>
-            </a>
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Venus">
+            </div>
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Venus">
                 <div class="d-flex flex-fill w-100 align-items-center justify-content-center">
                     <img src="@(Url.Content("~/Content/Assets/venus.svg"))" alt="Venus" class="img-fluid pb-2"
                          style="width: 25%;"/>
                 </div>
                 <p>Venus</p>
-            </a>
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Earth">
+            </div>
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Earth">
                 <div class="d-flex flex-fill w-100 align-items-center justify-content-center">
                     <img src="@(Url.Content("~/Content/Assets/earth.svg"))" alt="Earth" class="img-fluid pb-2"
                          style="width: 30%;"/>
                 </div>
                 <p>Earth</p>
-            </a>
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Mars">
+            </div>
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Mars">
                 <div class="d-flex flex-fill w-100 align-items-center justify-content-center">
                     <img src="@(Url.Content("~/Content/Assets/mars.svg"))" alt="Mars" class="img-fluid pb-2"
                          style="width: 20%;"/>
                 </div>
                 <p>Mars</p>
-            </a>
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Jupiter">
+            </div>
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Jupiter">
                 <div class="d-flex flex-fill w-100 align-items-center justify-content-center">
                     <img src="@(Url.Content("~/Content/Assets/jupiter.svg"))" alt="Jupiter" class="img-fluid pb-2"
                          style="width: 60%;"/>
                 </div>
                 <p>Jupiter</p>
-            </a>
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Saturn">
+            </div>
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Saturn">
                 <div class="d-flex flex-fill w-100 align-items-center justify-content-center">
                     <img src="@(Url.Content("~/Content/Assets/saturn.svg"))" alt="Saturn" class="img-fluid pb-2"
                          style="width: 55%;"/>
                 </div>
                 <p>Saturn</p>
-            </a>
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Uranus">
+            </div>
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Uranus">
                 <div class="d-flex flex-fill w-100 align-items-center justify-content-center">
                     <img src="@(Url.Content("~/Content/Assets/uranus.svg"))" alt="Uranus" class="img-fluid pb-2"
                          style="width: 40%;"/>
                 </div>
                 <p>Uranus</p>
-            </a>
-            <a class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
-               href="/SolarSystem/Neptune">
+            </div>
+            <div class="col d-flex flex-column align-items-center h-100 justify-content-between text-light fw-bold"
+                 href="/SolarSystem/Neptune">
                 <div class="d-flex flex-fill w-100 align-items-center justify-content-center">
                     <img src="@(Url.Content("~/Content/Assets/neptune.svg"))" alt="Neptune" class="img-fluid pb-2"
                          style="width: 40%;"/>
                 </div>
                 <p>Neptune</p>
-            </a>
+            </div>
         </nav>
     </section>
     <section class="container d-flex mt-5">
         <div class="d-flex flex-column w-100">
             <div class="d-flex w-100 justify-content-between mb-2">
                 <h2 class="fs-2 text-light">Flashcard Decks</h2>
-                <form class="d-flex align-items-center" method="post" action="@(Url.Action("AddFolder", "Dashboard"))">
-                    <input id="DeckTitle" name="DeckTitle" type="text" required class="px-2 border-0"
-                           style="border-radius: 0.375rem; height: 2.5rem;" placeholder="Deck Title"/>
-                    <button class="btn fw-bold bg-white border-0 ms-2" type="submit">Create New Deck</button>
-                </form>
+                <div class="d-flex align-items-center">
+                    @using (Html.BeginForm("AddFolder", "Dashboard", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input id="DeckTitle" name="deckTitle" type="text" required class="px-2 border-0"
+                               style="border-radius: 0.375rem; height: 2.5rem;" placeholder="Deck Title"/>
+                        <button class="btn fw-bold bg-white border-0 ms-2" type="submit">Create New Deck</button>
+                    }
+                </div>
             </div>
             <div class="d-flex border border-2 border-secondary rounded-2 w-100 p-2 overflow-auto">
                 <div class="row row-cols-6 g-2 w-100">
                     @{
-                        var decks = ViewBag.Decks as List<string> ?? new List<string>();
+                        var decks = ViewBag.Decks as List<FlashcardDeck> ?? new List<FlashcardDeck>();
                     }
+
                     @foreach (var deck in decks)
                     {
                         <div class="col d-flex flex-column justify-content-center align-items-center"
                              style="min-height: 6rem;">
-                            <a id="@deck"
+                            <a id="@deck.Id"
                                class="d-flex flex-column align-items-center text-decoration-none border border-2 border-secondary rounded-2 px-3 folder-hover"
-                               href="/Deck/Deck/@deck" style="max-width: 75%;">
-                                <p class="text-light m-0">@deck</p>
-                                <img src="@(Url.Content("~/Content/Assets/folder.svg"))" alt="Folder" class="img-fluid"
+                               href="/Deck/Deck/@deck.Id" style="max-width: 75%;">
+                                <p class="text-light m-0">@deck.Title</p>
+                                <img src="@Url.Content("~/Content/Assets/folder.svg")" alt="Folder" class="img-fluid"
                                      style="max-height: 80px;"/>
                             </a>
                         </div>
@@ -137,90 +149,109 @@
             <div class="d-flex w-100 justify-content-between mb-2">
                 <div class="d-flex align-items-center">
                     <h2 class="fs-2 text-light">Flashcards</h2>
-                    @Html.ActionLink("Learn All", "Learn", "Dashboard", new { index = 1, revealed = false }, new { @class = "btn fw-bold btn-success border-0 ms-4" })
+                    <div class="@((ViewBag.Flashcards == null || ((List<Flashcard>)ViewBag.Flashcards).Count == 0) ? "d-none" : "")">
+                        @Html.ActionLink("Learn All", "Learn", "Dashboard", new { index = 1, revealed = false }, new { @class = "btn fw-bold btn-success border-0 ms-4" })
+                    </div>
                 </div>
                 <button type="button" class="btn fw-bold bg-white border-0" data-bs-toggle="modal"
                         data-bs-target="#createFlashcardModal">
                     Create New Flashcard
                 </button>
             </div>
-            @if (ViewBag.Flashcards != null && ((List<string>)ViewBag.Flashcards).Count != 0)
+            @if (ViewBag.Flashcards != null && ((List<Flashcard>)ViewBag.Flashcards).Count != 0)
             {
                 <div class="row row-cols-6 g-2 w-100">
-                    @if (ViewBag.Flashcards != null && ((List<string>)ViewBag.Flashcards).Count != 0)
+                    @if (ViewBag.Flashcards != null && ((List<Flashcard>)ViewBag.Flashcards).Count != 0)
                     {
                         <div class="d-flex border border-2 border-secondary rounded-2 w-100 p-2 overflow-hidden">
                             <div class="row w-100 row-cols-5 g-2">
                                 @{
-                                    var flashcards = ViewBag.Flashcards as List<string> ?? new List<string>();
+                                    var flashcards = ViewBag.Flashcards as List<Flashcard> ?? new List<Flashcard>();
                                 }
-                                @foreach (var flashcard in flashcards)
+                                @for (var j = 0; j < flashcards.Count; j++)
                                 {
+                                    var flashcard = flashcards[j];
                                     <div class="col d-flex flex-column" style="min-height: 12rem;">
-                                        <div id="@flashcard"
+                                        <div id="@flashcard.Id"
                                              class="d-flex align-items-center p-2 bg-light text-dark rounded-2 h-100 justify-content-center">
-                                            <p class="flex-wrap m-0">@flashcard</p>
+                                            <p class="flex-wrap m-0">@flashcard.Question</p>
                                         </div>
                                         <div class="d-flex w-100 mt-1 justify-content-between">
-                                            <form method="post" action="">
-                                                <button type="submit" class="btn btn-danger border-0 fw-bold"
-                                                        style="">
-                                                    Delete
-                                                </button>
-                                            </form>
+                                            <div>
+                                                @using (Html.BeginForm("DeleteFlashcard", "Dashboard", FormMethod.Post))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" id="id" name="id" value="@flashcard.Id"/>
+
+                                                    <button type="submit" class="btn btn-danger border-0 fw-bold"
+                                                            style="">
+                                                        Delete
+                                                    </button>
+                                                }
+                                            </div>
                                             <button type="button" class="btn fw-bold bg-white border-0"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#editFlashcardModal-@flashcard.Replace(" ", "_")">
+                                                    data-bs-target="#editFlashcardModal-@flashcard.Id">
                                                 Edit
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="editFlashcardModal-@flashcard.Replace(" ", "_")"
+                                    <div class="modal fade" id="editFlashcardModal-@flashcard.Id"
                                          tabindex="-1" aria-hidden="true">
                                         <div class="modal-dialog">
-                                            <form class="modal-content" method="post" action="">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Edit Flashcard</h5>
-                                                    <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="d-flex flex-column px-2">
-                                                        <div class="row row-cols-2 w-100 g-4">
-                                                            <label for="question-edit"
-                                                                   class="fw-bold fs-4 col">Question</label>
-                                                            <label for="answer-edit"
-                                                                   class="fw-bold fs-4 col">Answer</label>
-                                                        </div>
-                                                        <div class="row row-cols-2 w-100 g-4">
-                                                            <div
-                                                                class="col d-flex align-items-center justify-content-center">
-                                                                <textarea id="question-edit" name="question" required
-                                                                          class="form-control text-center text-break"
-                                                                          style="border-radius:0.375rem; height:8rem; resize: none;"
-                                                                          placeholder="Question...">@flashcard</textarea>
+                                            <div class="modal-content">
+                                                @using (Html.BeginForm("EditFlashcard", "Dashboard", FormMethod.Post))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" id="id-@flashcard.Id" name="id"
+                                                           value="@flashcard.Id"/>
+
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit Flashcard</h5>
+                                                        <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="d-flex flex-column px-2">
+                                                            <div class="row row-cols-2 w-100 g-4">
+                                                                <label for="question-edit-@flashcard.Id"
+                                                                       class="fw-bold fs-4 col">Question</label>
+                                                                <label for="answer-edit-@flashcard.Id"
+                                                                       class="fw-bold fs-4 col">Answer</label>
                                                             </div>
-                                                            <div
-                                                                class="col d-flex align-items-center justify-content-center">
-                                                                <textarea id="answer-edit" name="answer" required
+                                                            <div class="row row-cols-2 w-100 g-4">
+                                                                <div
+                                                                    class="col d-flex align-items-center justify-content-center">
+                                                                <textarea
+                                                                    id="question-edit-@flashcard.Id"
+                                                                    name="question" required
+                                                                    class="form-control text-center text-break"
+                                                                    style="border-radius:0.375rem; height:8rem; resize: none;"
+                                                                    placeholder="Question...">@flashcard.Question</textarea>
+                                                                </div>
+                                                                <div
+                                                                    class="col d-flex align-items-center justify-content-center">
+                                                                <textarea id="answer-edit-@j"
+                                                                          name="answer" required
                                                                           class="form-control text-center text-break"
                                                                           style="border-radius:0.375rem; height:8rem; resize: none;"
-                                                                          placeholder="Answer..."></textarea>
+                                                                          placeholder="Answer...">@flashcard.Answer</textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div
-                                                    class="modal-footer d-flex justify-content-between align-items-center w-100">
-                                                    <button type="button" class="btn btn-danger border-0 fw-bold"
-                                                            data-bs-dismiss="modal">Cancel
-                                                    </button>
-                                                    <button type="submit"
-                                                            class="btn btn-success border-0 fw-bold ms-2"
-                                                            data-bs-dismiss="modal">Save
-                                                    </button>
-                                                </div>
-                                            </form>
+                                                    <div
+                                                        class="modal-footer d-flex justify-content-between align-items-center w-100">
+                                                        <button type="button" class="btn btn-danger border-0 fw-bold"
+                                                                data-bs-dismiss="modal">Cancel
+                                                        </button>
+                                                        <button type="submit"
+                                                                class="btn btn-success border-0 fw-bold ms-2"
+                                                                data-bs-dismiss="modal">Save
+                                                        </button>
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 }
@@ -233,40 +264,45 @@
     </section>
     <div class="modal fade" id="createFlashcardModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
-            <form class="modal-content" method="post" action="">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Flashcard</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="d-flex flex-column px-2">
-                        <div class="row row-cols-2 w-100 g-4">
-                            <label for="question-create" class="fw-bold fs-4 col">Question</label>
-                            <label for="answer-create" class="fw-bold fs-4 col">Answer</label>
-                        </div>
-                        <div class="row row-cols-2 w-100 g-4">
-                            <div class="col d-flex align-items-center justify-content-center">
+            <div class="modal-content">
+                @using (Html.BeginForm("CreateNewFlashcard", "Dashboard", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-header">
+                        <h5 class="modal-title">Create Flashcard</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex flex-column px-2">
+                            <div class="row row-cols-2 w-100 g-4">
+                                <label for="question-create" class="fw-bold fs-4 col">Question</label>
+                                <label for="answer-create" class="fw-bold fs-4 col">Answer</label>
+                            </div>
+                            <div class="row row-cols-2 w-100 g-4">
+                                <div class="col d-flex align-items-center justify-content-center">
                                 <textarea id="question-create" name="question" required
                                           class="form-control text-center text-break"
                                           style="border-radius:0.375rem; height:8rem; resize: none;"
                                           placeholder="Question..."></textarea>
-                            </div>
-                            <div class="col d-flex align-items-center justify-content-center">
+                                </div>
+                                <div class="col d-flex align-items-center justify-content-center">
                                 <textarea id="answer-create" name="answer" required
                                           class="form-control text-center text-break"
                                           style="border-radius:0.375rem; height:8rem; resize: none;"
                                           placeholder="Answer..."></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-between align-items-center w-100">
-                    <button type="button" class="btn btn-danger border-0 fw-bold" data-bs-dismiss="modal">Cancel
-                    </button>
-                    <button type="submit" class="btn btn-success border-0 fw-bold ms-2" data-bs-dismiss="modal">Create
-                    </button>
-                </div>
-            </form>
+                    <div class="modal-footer d-flex justify-content-between align-items-center w-100">
+                        <button type="button" class="btn btn-danger border-0 fw-bold" data-bs-dismiss="modal">Cancel
+                        </button>
+                        <button type="submit" class="btn btn-success border-0 fw-bold ms-2" data-bs-dismiss="modal">
+                            Create
+                        </button>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </main>

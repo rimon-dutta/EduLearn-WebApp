@@ -10,33 +10,40 @@
             <div class="col d-flex align-items-center justify-content-center h-100">
                 <img src="@(Url.Content("~/Content/Assets/flame.svg"))" alt="Streak" class="img-fluid pe-3"
                      style="max-width: 75%; max-height: 54px;"/>
-                <p class="fw-bold fs-4 m-0 align-self-center text-light">0</p>
+                <p class="fw-bold fs-4 m-0 align-self-center text-light">@ViewBag.LearningStreak</p>
             </div>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end col">
                 <ul class="navbar-nav">
                     <li>@Html.ActionLink("Dashboard", "Dashboard", "Dashboard", new { area = "" }, new { @class = "btn btn-primary border-0 bg-light text-dark fw-bold" })</li>
                     <li>
-                        <form method="post" action="">
-                            <button type="submit" class="btn border-0 ms-2 fw-bold" style="background-color: #E232EF;">
-                                Log Out
-                            </button>
-                        </form>
+                        <div>
+                            @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <button type="submit" class="btn border-0 ms-2 fw-bold"
+                                        style="background-color: #E232EF;">
+                                    Log Out
+                                </button>
+                            }
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <section class="container d-flex flex-column mt-5 flex-grow-1 align-items-center justify-content-center">
-        <div class="d-flex flex-column align-items-center bg-light rounded rounded-2 w-50 overflow-hidden p-2" style="height: 32rem;">
-            <p class="fw-bold fs-2">@ViewBag.Flashcard</p>
+        <div class="d-flex flex-column align-items-center bg-light rounded rounded-2 w-50 overflow-hidden p-2"
+             style="height: 32rem;">
+            <p class="fw-bold fs-2">Question ID: @ViewBag.Flashcard.Id</p>
             <div class="d-flex h-100 align-items-center">
                 @if (!ViewBag.revealed)
                 {
-                    <p class="text-wrap fs-4">Question</p>
+                    <p class="text-wrap fs-4">@ViewBag.Flashcard.Question</p>
                 }
                 else
                 {
-                    <p class="text-wrap fs-4">Answer</p>
+                    <p class="text-wrap fs-4">@ViewBag.Flashcard.Answer</p>
                 }
             </div>
         </div>
@@ -49,14 +56,29 @@
                 }
                 else
                 {
-                    <div></div>
+                    @Html.ActionLink("Return to Deck", "Dashboard", "Dashboard", new {  }, new { @class = "btn fw-bold btn-danger border-0" })
                 }
+
                 @Html.ActionLink("Reveal", "Learn", "Dashboard", new { index = ViewBag.index, revealed = !ViewBag.revealed }, new { @class = "btn fw-bold btn-success border-0 ms-2" })
             }
             else
             {
                 @Html.ActionLink("Back", "Learn", "Dashboard", new { index = ViewBag.index, revealed = !ViewBag.revealed }, new { @class = "btn fw-bold btn-danger border-0" })
-                @Html.ActionLink("Next", "Learn", "Dashboard", new { index = (ViewBag.index + 1), revealed = !ViewBag.revealed }, new { @class = "btn fw-bold btn-success border-0 ms-2" })
+                if (ViewBag.flashcardsAmount == ViewBag.Index)
+                {
+                    using (Html.BeginForm("FinishLearningSession", "Dashboard", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <button type="submit" class="btn fw-bold bg-white border-0 ms-2">
+                            Finish
+                        </button>
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("Next", "Learn", "Dashboard", new { index = (ViewBag.index + 1), revealed = !ViewBag.revealed }, new { @class = "btn fw-bold btn-success border-0 ms-2" })
+                }
             }
         </div>
     </section>
